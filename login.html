@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+        <h1>Login Your Account</h1>
+        <input type="email" id="email" placeholder="Email"
+         required minlength="4">
+        <input type="password" id="password" placeholder="Password" required>
+        <input onclick="login()" type="button" value="login">
+    
+    <script>
+        const users = [
+            {email:'mark@gmail.com', password: '1234', role: 'admin'},
+            {email:'user@gmail.com', password: '1234', role: 'user'},
+        ]
+        function login(){
+            const email = document.getElementById('email').value
+            const password = document.getElementById('password').value
+            const user = users.find((user) => (user.email==email && user.password==password))
+            
+            // check email and password from [users]
+            if(user) {
+                if(user.role=='admin') {
+                    // redirect to dashboard
+                    window.location.href = 'dashboard.html'
+                }else{
+                   // redirect to user page
+                    window.location.href = 'user.html' 
+                }
+            }else{
+                alert('login fail!')
+            }
+
+        }
+    </script>
+</body>
+</html>
